@@ -7,7 +7,7 @@ function wait() {
 }
 
 echo
-read -p "walk through manual setup steps? [Y/n] " do_manual_steps
+read -p "walk through manual system setup steps? [Y/n] " do_manual_steps
 if [[ "${do_manual_steps}" != "n" ]] ; then
 	echo "starting manual setup steps..."
 
@@ -82,8 +82,47 @@ if [[ "${do_manual_steps}" != "n" ]] ; then
 	echo "- Autofill Passwords and Passkeys: false"
 	open x-apple.systempreferences:com.apple.Passwords-Settings.extension
 	wait
+
+	echo "manual system setup steps complete"
 else
-	echo "skipping manual setup steps"
+	echo "skipping manual system setup steps"
+fi
+
+
+function add_website_to_dock() {
+	local website="$1"
+
+	echo "opening ${website} ..."
+	open -a Safari "${website}"
+	wait
+}
+echo
+read -p "walk through manual web app setup steps? [Y/n] " do_manual_web_steps
+if [[ "${do_manual_web_steps}" != "n" ]] ; then
+	# Google Suite
+	add_website_to_dock "http://calendar.google.com"
+	add_website_to_dock "http://chat.google.com"
+	add_website_to_dock "http://mail.google.com"
+	add_website_to_dock "http://meet.google.com"
+	add_website_to_dock "http://contacts.google.com"
+	add_website_to_dock "http://keep.google.com"
+	add_website_to_dock "http://photos.google.com"
+
+	# Video & Music
+	add_website_to_dock "https://www.twitch.tv"
+	add_website_to_dock "http://www.netflix.com"
+	add_website_to_dock "http://www.youtube.com"
+	add_website_to_dock "http://music.youtube.com"
+
+	# Games
+	add_website_to_dock "https://boardgamegeek.com"
+	add_website_to_dock "https://www.dndbeyond.com"
+	add_website_to_dock "https://boardgamearena.com"
+	add_website_to_dock "https://www.yucata.de/"
+
+	echo "manual web app setup steps complete"
+else
+	echo "skipping manual web app setup steps"
 fi
 
 # One interactive sudo prompt to make everything else smoother.
