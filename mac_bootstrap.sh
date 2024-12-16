@@ -83,6 +83,12 @@ if [[ "${do_manual_steps}" != "n" ]] ; then
 	open x-apple.systempreferences:com.apple.Passwords-Settings.extension
 	wait
 
+	echo
+	echo "Opening Login Items and Extensions.  Set the following:"
+	echo "- Open at Login: add truenas media volume.
+	open x-apple.systempreferences:com.apple.LoginItems-Settings.extension
+	wait
+
 	echo "manual system setup steps complete"
 else
 	echo "skipping manual system setup steps"
