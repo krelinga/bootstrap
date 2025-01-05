@@ -85,7 +85,7 @@ if [[ "${do_manual_steps}" != "n" ]] ; then
 
 	echo
 	echo "Opening Login Items and Extensions.  Set the following:"
-	echo "- Open at Login: add truenas media volume.
+	echo "- Open at Login: add truenas media volume."
 	open x-apple.systempreferences:com.apple.LoginItems-Settings.extension
 	wait
 
